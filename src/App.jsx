@@ -1,5 +1,5 @@
 import React from "react";
-import { Home ,AllTasks,ImportantTasks,InCompletedTasks,CompletedTasks} from "./pages/index";
+import { Home ,AllTasks,ImportantTasks,InCompletedTasks,CompletedTasks,Signup,Login} from "./pages/index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
@@ -12,6 +12,8 @@ const App = () => {
           <Route path='/completed' element={<CompletedTasks/>}/>
           <Route path='/incompleted' element={<InCompletedTasks/>}/>
           </Route>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </Router>
     </div>
