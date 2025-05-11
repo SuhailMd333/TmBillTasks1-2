@@ -1,9 +1,42 @@
 import React from 'react'
 import { Cards } from '../components'
+import axios from 'axios' 
+import { useState,useEffect } from 'react'
 const ImportantTasks = () => {
+ const [data,setData] = useState([])  
+  const headers = { 
+    id:localStorage.getItem("id"),
+    authToken:localStorage.getItem('token')
+    }
+  
+   useEffect(() => {
+      
+      
+      const fetch = async  () => {
+     const res =  await axios.get("http://localhost:5000/api/v2/get-imp-tasks",
+      {headers})
+     setData(res.data.ImpTaskData)
+     console.log(res.data)
+      }
+      fetch()
+    }, []);
+
+
+    // Function to update task status (will be passed to Cards)
+  const updateTaskStatus = (taskId, type) => {
+    if (type === 'delete') {
+      setData(prev => prev.filter(task => task._id !== taskId));
+    } else {
+      setData(prev => 
+        prev.map(task => 
+          task._id === taskId ? { ...task, [type]: !task[type] } : task
+        )
+      );
+    }
+  };
   return (
     <div> 
-      <Cards home={"false"}/>
+      <Cards home={"false"} updateTaskStatus={updateTaskStatus} data={data}/>
     </div>
   )
 }
