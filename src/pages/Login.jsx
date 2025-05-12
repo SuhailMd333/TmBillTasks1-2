@@ -95,9 +95,9 @@ const Login = () => {
               />
               <label
                 htmlFor={field}
-                className="absolute left-33 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-blue-400"
+                className="absolute left-3 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-blue-400"
               >
-                {field.charAt(0).toUpperCase() + field.slice(1)}
+                {data[field].length ? null : field.charAt(0).toUpperCase() + field.slice(1)}
               </label>
               {field === "password" && (
                 <button
@@ -114,7 +114,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg transition-all ${
+            className={`w-full bg-blue-600 hover:bg-blue-500 text-white cursor-pointer font-semibold py-3 rounded-lg transition-all ${
               loading ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >

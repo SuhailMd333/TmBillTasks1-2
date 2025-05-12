@@ -80,7 +80,7 @@ const Sidebar = () => {
       </div>
 
       <div className="pt-6">
-        <button onClick={logout} className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 rounded-lg transition">
+        <button onClick={logout} className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 cursor-pointer rounded-lg transition">
           Log Out
         </button>
       </div>

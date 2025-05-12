@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Cards} from '../components'
+import {Cards,NoTaskToShow} from '../components'
 import axios from 'axios'
 
 const CompletedTasks = () => {
@@ -36,9 +36,13 @@ const CompletedTasks = () => {
       }
     };
   return (
+    
     <div>
       <Cards home={"false"} data={data} updateTaskStatus={updateTaskStatus} />
     </div>
+ 
+  
+   
   )
 }
 

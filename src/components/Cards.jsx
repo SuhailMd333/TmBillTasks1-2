@@ -58,7 +58,7 @@ const Cards = ({ home, setInputDiv,data,updateTaskStatus,toast,setupdatedData}) 
   try {
             const response = await axios.delete(`https://tmbill-backend.onrender.com/api/v2/delete-task/${id}`,{headers})
                updateTaskStatus(id,'delete');
-              toast.success(response.data.message)
+              toast.success(response.data.message,{success:1})
             console.log(response)
            } catch (error) {
             console.log(error)
@@ -74,37 +74,55 @@ const Cards = ({ home, setInputDiv,data,updateTaskStatus,toast,setupdatedData}) 
       { data &&
       data.map((item, i) => {
         return (
-          <animated.div key={i} style={cardAnimation} className="flex flex-col justify-between border border-gray-500 bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-all duration-70">
-            <div>
-              <h2 className="text-xl font-semibold text-white">{item.title}</h2>
-              <p className="text-sm text-gray-300 my-2 break-words">{item.desc}</p>
-            </div>
-            <div className="mt-4 w-full flex items-center justify-between">
-              <button
-                className={`${
-                  item.completed === false ? "bg-red-700" : "bg-green-700"
-                } p-2 rounded  text-white cursor-pointer`}
-                onClick={() =>  handleCompleteTask(item._id)}
-              >
-                {item.completed === true ? "Completed" : "Incompleted"}
-              </button>
-              <div className="text-white p-2 w-3/6  text-2xl font-semibold flex justify-around gap-4 ">
-                <button onClick={() => handleImportant(item._id)} className="text-red-500 cursor-pointer">
-                { item.important === false ? <CiHeart /> : <FaHeart />}
-                </button>
-               {
-                home === "true" && (
-                  <button onClick={() => handleUpdate(item._id,item.title,item.desc)} className="cursor-pointer" >
-                  <FaEdit />
-                </button>
-                )
-               }
-                <button onClick={() => deleteTask(item._id)} className="cursor-pointer" >
-                  <IoMdArchive />
-                </button>
-              </div>
-            </div>
-          </animated.div>
+         <animated.div 
+  key={i} 
+  style={cardAnimation} 
+  className="flex flex-col justify-between border border-gray-500 bg-gray-700 p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-2xl transform transition-all duration-70 w-full"
+>
+  <div className="mb-4">
+    <h2 className="text-lg sm:text-xl font-semibold text-white">{item.title}</h2>
+    <p className="text-xs sm:text-sm text-gray-300 mt-2 break-words">{item.desc}</p>
+  </div>
+  
+  <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
+    <button
+      className={`${
+        item.completed === false ? "bg-red-700" : "bg-green-700"
+      } p-2 rounded text-white cursor-pointer w-full sm:w-auto text-sm sm:text-base`}
+      onClick={() => handleCompleteTask(item._id)}
+    >
+      {item.completed === true ? "Completed" : "Incomplete"}
+    </button>
+    
+    <div className="text-white p-2 w-full sm:w-3/6 flex justify-between sm:justify-around gap-2 sm:gap-4">
+      <button 
+        onClick={(e) => {
+           e.stopPropagation();
+          handleImportant(item._id)
+        }} 
+        className="text-red-500 cursor-pointer text-xl sm:text-2xl"
+      >
+        {item.important === false ? <CiHeart /> : <FaHeart />}
+      </button>
+      
+      {home === "true" && (
+        <button 
+          onClick={() => handleUpdate(item._id, item.title, item.desc)} 
+          className="cursor-pointer text-xl sm:text-2xl"
+        >
+          <FaEdit />
+        </button>
+      )}
+      
+      <button 
+        onClick={() => deleteTask(item._id)} 
+        className="cursor-pointer text-xl sm:text-2xl"
+      >
+        <IoMdArchive />
+      </button>
+    </div>
+  </div>
+</animated.div>
         );
       })}
       {home === "true" && (
