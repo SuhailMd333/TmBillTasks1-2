@@ -29,7 +29,7 @@ const Cards = ({ home, setInputDiv,data,updateTaskStatus,toast,setupdatedData}) 
 
  
            try {
-            const response = await axios.put(`http://localhost:5000/api/v2/update-complete-task/${id}`,{},{headers})
+            const response = await axios.put(`https://tmbill-backend.onrender.com/api/v2/update-complete-task/${id}`,{},{headers})
               updateTaskStatus(id,'completed');
                if(home === "false") {
                updateTaskStatus(id, 'delete')
@@ -42,7 +42,7 @@ const Cards = ({ home, setInputDiv,data,updateTaskStatus,toast,setupdatedData}) 
    // handle important task
  const handleImportant = async (id) => {
   try {
-            const response = await axios.put(`http://localhost:5000/api/v2/update-imp-task/${id}`,{},{headers})
+            const response = await axios.put(`https://tmbill-backend.onrender.com/api/v2/update-imp-task/${id}`,{},{headers})
                updateTaskStatus(id,'important');
                if(home === "false") {
                updateTaskStatus(id, 'delete')
@@ -56,7 +56,7 @@ const Cards = ({ home, setInputDiv,data,updateTaskStatus,toast,setupdatedData}) 
  // delete task 
   const deleteTask = async (id) => {
   try {
-            const response = await axios.delete(`http://localhost:5000/api/v2/delete-task/${id}`,{headers})
+            const response = await axios.delete(`https://tmbill-backend.onrender.com/api/v2/delete-task/${id}`,{headers})
                updateTaskStatus(id,'delete');
               toast.success(response.data.message)
             console.log(response)
@@ -88,7 +88,7 @@ const Cards = ({ home, setInputDiv,data,updateTaskStatus,toast,setupdatedData}) 
               >
                 {item.completed === true ? "Completed" : "Incompleted"}
               </button>
-              <div className="text-white p-2 w-3/6 text-2xl font-semibold flex justify-around gap-4">
+              <div className="text-white p-2 w-3/6  text-2xl font-semibold flex justify-around gap-4 ">
                 <button onClick={() => handleImportant(item._id)} className="text-red-500 cursor-pointer">
                 { item.important === false ? <CiHeart /> : <FaHeart />}
                 </button>

@@ -7,12 +7,13 @@ import { Link, useLocation } from "react-router-dom";
 import { useSpring, animated } from "@react-spring/web"; 
 import {useDispatch} from "react-redux";  
 import {authActions} from '../reducer/auth'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";  
 
 const Sidebar = () => {
   const location = useLocation();
   const dispatch = useDispatch()
-  
+  const history = useNavigate()
   // Create a state to trigger animation
   const [isVisible, setIsVisible] = useState(false);
   const [Data,setData] = useState()
@@ -32,7 +33,7 @@ const Sidebar = () => {
     setIsVisible(true);
     console.log(headers)
     const fetch = async  () => {
-   const res =  await axios.get("http://localhost:5000/api/v2/get-all-task",
+   const res =  await axios.get("https://tmbill-backend.onrender.com/api/v2/get-all-task",
     {headers})
    setData(res.data.user)
    

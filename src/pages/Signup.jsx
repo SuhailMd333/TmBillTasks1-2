@@ -51,7 +51,7 @@ const Signup = () => {
         return toast.error("All fields are required");
       }
 
-      const response = await axios.post("http://localhost:5000/api/v1/sign-up", data);
+      const response = await axios.post("https://tmbill-backend.onrender.com/api/v1/sign-up", data);
       console.log(response.data.data.user.id)
       toast.success(response.data.message || "Signup successful!");
       dispatch(authActions.login())
@@ -64,7 +64,7 @@ const Signup = () => {
       const errMsg = error.response?.data?.message || "Signup failed.";
       toast.error(errMsg);
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   };
 

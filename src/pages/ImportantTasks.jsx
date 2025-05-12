@@ -13,7 +13,7 @@ const ImportantTasks = () => {
       
       
       const fetch = async  () => {
-     const res =  await axios.get("http://localhost:5000/api/v2/get-imp-tasks",
+     const res =  await axios.get("https://tmbill-backend.onrender.com/api/v2/get-imp-tasks",
       {headers})
      setData(res.data.ImpTaskData)
      console.log(res.data)

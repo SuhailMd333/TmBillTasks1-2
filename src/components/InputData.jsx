@@ -39,7 +39,7 @@ const InputData = ({
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/v2/create-task",
+          "https://tmbill-backend.onrender.com/api/v2/create-task",
           Data,
           { headers }
         );
@@ -64,7 +64,7 @@ const InputData = ({
     } else {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/v2/update-task/${updatedData.id}`,
+          `https://tmbill-backend.onrender.com/api/v2/update-task/${updatedData.id}`,
           Data,
           { headers }
         );

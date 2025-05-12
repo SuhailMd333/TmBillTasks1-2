@@ -30,7 +30,7 @@ const AllTasks = () => {
     
     console.log(headers)
     const fetch = async  () => {
-   const res =  await axios.get("http://localhost:5000/api/v2/get-all-task",
+   const res =  await axios.get("https://tmbill-backend.onrender.com/api/v2/get-all-task",
     {headers})
    setData(res.data.user.tasks)
    console.log(res.data.user.tasks)
