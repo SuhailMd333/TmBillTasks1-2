@@ -89,12 +89,7 @@ const InputData = ({
       <div
         className={` ${inputDiv} top-0 left-0 bg-gray-800 opacity-80 h-screen w-full fixed z-10 transition-all duration-70`}
       ></div>
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          className: "bg-gray-800 text-white border border-gray-700",
-        }}
-      />
+     
 
       {/* Modal Container with animation */}
       <animated.div

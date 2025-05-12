@@ -80,12 +80,7 @@ const AllTasks = () => {
     <>
       {/* Floating "Add New Task" Button */}
       <div className="w-full flex justify-end px-4 py-2 mask-b-to-orange-60">
-        <Toaster
-        position="top-center"
-        toastOptions={{
-          className: "bg-gray-800 text-white border border-gray-700",
-        }}
-      />
+     
         <button
           onClick={() => setInputDiv("fixed")}
           className="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 hover:scale-105 transition-all duration-300"

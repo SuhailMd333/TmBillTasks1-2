@@ -63,12 +63,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          className: "bg-gray-800 text-white border border-gray-700",
-        }}
-      />
+     
 
       <animated.div
         style={animation}

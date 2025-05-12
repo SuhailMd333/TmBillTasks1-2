@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 import {authActions} from '../reducer/auth'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";  
+import {toast} from 'react-hot-toast'
 
 const Sidebar = () => {
   const location = useLocation();
@@ -53,6 +54,7 @@ const Sidebar = () => {
         localStorage.removeItem("id");
         localStorage.removeItem("token");
         history("/login")
+        toast.success('Logged out Successfully')
   }
   return (
     <animated.div style={slideIn} className="flex flex-col h-full justify-between text-white">
